@@ -1,0 +1,23 @@
+{
+  "name": "prayer-times-website",
+  "version": "1.0.0",
+  "description": "Modern Prayer Times Website with Athan Notifications",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server --port=3000 --host=localhost",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.2"
+  },
+  "keywords": [
+    "prayer-times",
+    "islamic",
+    "prayer",
+    "salah",
+    "athan",
+    "adhan"
+  ]
+}

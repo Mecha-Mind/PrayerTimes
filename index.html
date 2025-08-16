@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواقيت الصلاة</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Amiri:wght@700&family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-mosque"></i>
+                    <h1 class="logo-text">مواقيت الصلاة</h1>
+                </div>
+                <button id="themeToggle" 
+                        class="theme-toggle" 
+                        title="تبديل الوضع المظلم"
+                        aria-label="تبديل الوضع المظلم"
+                        aria-pressed="false">
+                    <span class="sr-only">تبديل الوضع المظلم</span>
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                    <i class="fas fa-sun" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="search-help" role="region" aria-label="تعليمات البحث" id="searchHelp">
+                <p><i class="fas fa-info-circle" aria-hidden="true"></i> يمكنك البحث عن أي مدينة في العالم. اكتب اسم المدينة باللغة الإنجليزية فقط (مثل: Cairo, Riyadh, Istanbul). لا يلزم كتابة الهمزات أو التشكيل.</p>
+                <p class="examples" aria-hidden="false">أمثلة: Jeddah, Makkah, Madinah, Dubai, London, New York</p>
+            </div>
+            <div class="search-container" role="search" aria-labelledby="searchHelp">
+                <label for="cityInput" class="sr-only">اسم المدينة</label>
+                <input 
+                    type="text" 
+                    id="cityInput" 
+                    placeholder="ابحث عن مدينة (باللغة الإنجليزية)..."
+                    aria-required="true"
+                    autocomplete="address-level2"
+                    aria-describedby="searchHelp examples"
+                    aria-label="حقل إدخال اسم المدينة">
+                <button 
+                    id="searchBtn" 
+                    class="search-button" 
+                    type="button"
+                    title="بحث"
+                    aria-label="تنفيذ البحث">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <span class="sr-only">بحث</span>
+                </button>
+            </div>
+            <div class="date-container">
+                <h2 id="currentDate">--/--/----</h2>
+                <p id="hijriDate">--/--/---- هـ</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="prayer-times">
+                <div class="prayer-card" id="fajr">
+                    <i class="fas fa-moon"></i>
+                    <h3>الفجر</h3>
+                    <p class="time">--:--</p>
+                </div>
+                <div class="prayer-card" id="sunrise">
+                    <i class="fas fa-sun"></i>
+                    <h3>الشروق</h3>
+                    <p class="time">--:--</p>
+                </div>
+                <div class="prayer-card" id="dhuhr">
+                    <i class="fas fa-sun"></i>
+                    <h3>الظهر</h3>
+                    <p class="time">--:--</p>
+                </div>
+                <div class="prayer-card" id="asr">
+                    <i class="fas fa-sun"></i>
+                    <h3>العصر</h3>
+                    <p class="time">--:--</p>
+                </div>
+                <div class="prayer-card" id="maghrib">
+                    <i class="fas fa-sun"></i>
+                    <h3>المغرب</h3>
+                    <p class="time">--:--</p>
+                </div>
+                <div class="prayer-card" id="isha">
+                    <i class="fas fa-moon"></i>
+                    <h3>العشاء</h3>
+                    <p class="time">--:--</p>
+                </div>
+            </div>
+
+            <div class="next-prayer">
+                <h3>الصلاة القادمة: <span id="nextPrayerName">--</span></h3>
+                <div class="countdown">
+                    <span id="countdown">--:--:--</span>
+                    <p>متبقي على أذان <span id="nextPrayerName2">--</span></p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="audio-controls">
+                <button id="toggleAudio">
+                    <i class="fas fa-volume-up"></i> تفعيل التنبيه الصوتي
+                </button>
+                <audio id="athanAudio" src="https://www.islamcan.org/audio/athan/azan1.mp3" preload="auto"></audio>
+            </div>
+            <p class="location">
+                <i class="fas fa-map-marker-alt"></i> 
+                <span id="currentLocation">اختر مدينة</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Notification Popup -->
+    <div class="notification-popup" id="notificationPopup">
+        <div class="notification-content">
+            <button class="close-btn" id="closeNotification">&times;</button>
+            <div class="notification-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3 class="notification-title">تنبيه</h3>
+            <p class="notification-message" id="notificationMessage">رسالة التنبيه تظهر هنا</p>
+            <button class="neon-button" id="notificationAction">حسناً</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://my-nextjs-portfolio-sigma.vercel.app/" target="_blank" class="footer-link">
+                    <i class="fas fa-user"></i> المطور
+                </a>
+                <a href="https://my-nextjs-portfolio-sigma.vercel.app/contact" target="_blank" class="footer-link">
+                    <i class="fas fa-envelope"></i> تواصل معنا
+                </a>
+                <a href="https://my-nextjs-portfolio-sigma.vercel.app/contact" id="reportBug" target="_blank" class="footer-link">
+                    <i class="fas fa-bug"></i> الإبلاغ عن مشكلة
+                </a>
+            </div>
+            <div class="footer-copyright">
+                <p> 2025 جميع الحقوق محفوظة | مواقيت الصلاة</p>
+                <p class="version">الإصدار 1.0.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Script (load first) -->
+    <script src="js/theme.js" type="module"></script>
+    
+    <!-- Main Application Script -->
+    <script src="js/app.js" type="module"></script>
+    <!-- Audio Element for Athan -->
+    <audio id="athanAudio" preload="auto">
+        <source src="https://www.islamcan.com/audio/adhan/azan1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    
+    <!-- JavaScript Files -->
+    <script type="module" src="js/utils.js"></script>
+    <script type="module" src="js/storage.js"></script>
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
