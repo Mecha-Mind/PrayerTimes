@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مواقيت الصلاة</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Amiri:wght@700&family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
     <div class="container">
@@ -104,7 +105,10 @@
                 <button id="toggleAudio">
                     <i class="fas fa-volume-up"></i> تفعيل التنبيه الصوتي
                 </button>
-                <audio id="athanAudio" src="https://www.islamcan.org/audio/athan/azan1.mp3" preload="auto"></audio>
+                <audio id="athanAudio" preload="auto">
+                    <source src="https://www.islamcan.com/audio/adhan/azan1.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
             <p class="location">
                 <i class="fas fa-map-marker-alt"></i> 
@@ -130,9 +134,6 @@
     <footer class="glass-footer">
         <div class="footer-content">
             <div class="footer-links">
-                <a href="https://my-nextjs-portfolio-sigma.vercel.app/" target="_blank" class="footer-link">
-                    <i class="fas fa-user"></i> المطور
-                </a>
                 <a href="https://my-nextjs-portfolio-sigma.vercel.app/contact" target="_blank" class="footer-link">
                     <i class="fas fa-envelope"></i> تواصل معنا
                 </a>
@@ -153,13 +154,6 @@
     
     <!-- Main Application Script -->
     <script src="js/app.js" type="module"></script>
-    <!-- Audio Element for Athan -->
-    <audio id="athanAudio" preload="auto">
-        <source src="https://www.islamcan.com/audio/adhan/azan1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    
     <!-- JavaScript Files -->
     <script type="module" src="js/utils.js"></script>
     <script type="module" src="js/storage.js"></script>

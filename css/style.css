@@ -607,7 +607,7 @@ header {
     font-size: 2.5rem;
     font-weight: bold;
     margin: 15px 0;
-    color: var(--success-color);
+    color: var(--text-success);
     min-height: 3.5rem; /* Ensure consistent height */
 }
 
